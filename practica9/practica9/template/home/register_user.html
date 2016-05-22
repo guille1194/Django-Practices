@@ -1,0 +1,12 @@
+{% extends 'herencia.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Registro Usuarios</h1>
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Enviar">
+	<input type="reset" value="Cancelar">
+</form>
+{% endblock %}
