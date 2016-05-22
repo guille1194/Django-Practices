@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block content %}
+<html>
+<body>
+	<h1>buscar_profesionista</h1>
+	<form action ="" method = "POST">
+		{% csrf_token %}
+		<input type = "text" name = "campo">
+
+		<input type = "submit" name = "find" id = "find" value = "Find">
+		<input type = "reset" value = "cancel">
+	</form>
+</div>
+<div class="container-fluid bg-2 text-center">
+	<div class ="table-responsive">
+		<table class="table">
+			<tr>
+				<th>perfil_usuario</th>
+				<th>nombre_profesionista</th>
+        <th>apellido_profesionista</th>
+        <th>reportes</th>
+        <th>horario</th>
+        <th>telefono</th>
+        <th>curso</th>
+        <th>email</th>
+			</tr>
+
+			{% for item in objects %}
+			<tr>
+				<td>{{item.perfil_usuario}}</td>
+				<td>{{item.nombre_profesionista}}</td>
+        <td>{{item.apellido_profesionista}}</td>
+        <td>{{item.reportes}}</td>
+        <td>{{item.horario}}</td>
+        <td>{{item.telefono}}</td>
+        <td>{{item.curso}}</td>
+        <td>{{item.email}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<h3>{{mensaje}}</h3>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

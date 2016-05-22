@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block content %}
+<html>
+<body>
+	<h1>buscar_curso</h1>
+	<form action ="" method = "POST">
+		{% csrf_token %}
+		<input type = "text" name = "campo">
+
+		<input type = "submit" name = "find" id = "find" value = "Find">
+		<input type = "reset" value = "cancel">
+	</form>
+</div>
+<div class="container-fluid bg-2 text-center">
+	<div class ="table-responsive">
+		<table class="table">
+			<tr>
+				<th>numero_curso</th>
+				<th>curso</th>
+
+			</tr>
+
+			{% for item in objects %}
+			<tr>
+				<td>{{item.numero_curso}}</td>
+				<td>{{item.curso}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<h3>{{mensaje}}</h3>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

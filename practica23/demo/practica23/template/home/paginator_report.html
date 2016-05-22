@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}PaginatorReport{% endblock %}
+{% block content %}
+<h1>Reporte General</h1>
+
+<ol>
+		{% for f in filter %}
+
+
+			<li><label>
+			Nombre:
+		</label>
+			<a href="/detalle/">{{ f.nombre_paciente }}</a></li>
+
+
+		{% endfor %}
+</ol>
+		{% if filter %}
+			<a href="/paginator_report/page/1"> << </a>
+			{% if filter.has_previous %}
+				<a href="/paginator_report/page/{{ filter.previous_page_number }}">Prev</a>
+			{% else %}
+				<a href="#">Prev</a>
+			{% endif %}
+			{% if filter.has_next %}
+				<a href="/paginator_report/page/{{ filter.next_page_number }}">Next</a>
+			{% else %}
+				<a href="#">Next</a>
+			{% endif %}
+				<a href="/paginator_report/page/{{ filter.paginator.num_pages }}"> >> </a>
+				<br><br>
+			<h4>Page: {{ filter.number }} of {{ filter.paginator.num_pages }}</h4>
+		{% endif %}
+{% endblock %}
