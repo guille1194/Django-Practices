@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html>
+<body>
+<center><h1>custom validations</h1></center>
+
+<form id = "miform" action="." method="get" onsubmit=" return valida(miform)">
+<p>
+jugador 1: <input type="text" id = "jugador1"><br>
+jugador 2: <input type="text" id = "jugador2"><br>
+jugador 3: <input type="text" id = "jugador3"><br>
+</p>
+<input type="submit" value="enviar" />
+
+</form>
+<script src= "{% static 'js/jquery-2.2.1.js' %}"></script>
+<script type="text/javascript">
+function valida(f){
+	var ok = true;
+	var c = 0;
+	var msg = "debes ingresar algo en los campos:\n";
+	if(f.elements[0].value == "")
+	{
+		msg += "-jugador1\n";
+		ok = false;
+	}else{c += 1}
+
+	if(f.elements["jugador2"].value == "")
+	{
+		msg += "-jugador2\n";
+		ok = false;
+	}else{c += 1}
+
+	if(f.jugador3.value == "")
+		{
+			msg += "-jugador3\n";
+			ok = false
+		}else{c += 1}
+
+
+	if(ok == false && c <3)
+		alert(msg);
+	else{alert('Exitoo...')}
+	return ok;
+	
+}
+
+</script>
+
+
+
+</body>
+</html>	
